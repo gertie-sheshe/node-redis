@@ -5,10 +5,16 @@ const passport = require('passport');
 const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 
+// mongoose.Query.prototype.exec = 34;
+
+// console.log('OOONEEE', mongoose.Query.prototype.exec)
+
 require('./models/User');
 require('./models/Blog');
 require('./services/passport');
+require('./services/cache');
 
+// console.log('TWOOOOOO', mongoose.Query.prototype.exec)
 mongoose.Promise = global.Promise;
 mongoose.connect(keys.mongoURI, { useMongoClient: true });
 
