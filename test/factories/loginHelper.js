@@ -1,4 +1,10 @@
-module.exports = async (page, session, sig) => {
+const sessionFactory = require('./sessionFactory');
+const userFactory = require('./userFactory');
+
+module.exports = async (page) => {
+
+    const user = await userFactory();
+    const { session, sig } = sessionFactory(user);
     // Set the values in the cookie.
     await page.setCookie({ name: 'session', value: session });
     await page.setCookie({ name: 'session.sig', value: sig });
