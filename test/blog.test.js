@@ -27,8 +27,25 @@ describe('When logged in', async () => {
         expect(label).toEqual('Blog Title');
     });
 
+    describe('And using valid inputs', async () => {
+        beforeEach(async () => {
+            await page.type('.title input', 'Blog Title Test');
+            await page.type('.content input', 'Blog Content Test');
+            await page.click('form button');
+        });
+        test('Submitting takes user to review screen', async () => {
+            const confirmText = await page.$eval('h5', el => el.innerHTML);
+            
+            expect(confirmText).toEqual('Please confirm your entries');
+        });
+
+        test('Submitting then saving takes adds blog to index page', async () => {
+
+        });
+    });
+
     // Nested describe
-    describe('And using invaid input', async () => {
+    describe('And using invalid input', async () => {
         beforeEach(async () => {
             await page.click('form button');
         });
