@@ -35,12 +35,20 @@ describe('When logged in', async () => {
         });
         test('Submitting takes user to review screen', async () => {
             const confirmText = await page.$eval('h5', el => el.innerHTML);
-            
             expect(confirmText).toEqual('Please confirm your entries');
         });
 
-        test('Submitting then saving takes adds blog to index page', async () => {
+        test('Submitting then saving adds blog to index page', async () => {
+            await page.click('button.green');
+            await page.waitFor('.card');
 
+            const title = await page.$eval('.card-title', el => el.innerHTML);
+            const content = await page.$eval('p', el => el.innerHTML);
+
+            // console.log(title, content);
+
+            expect(title).toEqual('Blog Title Test');
+            expect(content).toEqual('Blog Content Test');
         });
     });
 
