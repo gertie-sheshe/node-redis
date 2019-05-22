@@ -10,7 +10,7 @@ module.exports = async (page) => {
     await page.setCookie({ name: 'session.sig', value: sig });
 
     // Refresh page so values are set in cookie
-    await page.goto('localhost:3000/blogs');
+    await page.goto('http://localhost:3000/blogs');
 
     // Wait for page to completely load
     // And element to show

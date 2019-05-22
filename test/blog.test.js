@@ -5,11 +5,12 @@ let browser, page;
 
 beforeEach(async () => {
     browser = await puppeteer.launch({
-        headless: false
+        headless: true,
+        args: ['--no-sandbox']
     });
 
     page = await browser.newPage();
-    await page.goto('localhost:3000')
+    await page.goto('http://localhost:3000')
 });
 
 afterEach(async () => {
