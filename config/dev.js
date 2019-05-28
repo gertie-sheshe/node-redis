@@ -3,5 +3,7 @@ module.exports = {
   googleClientSecret: process.env.GOOGLE_CLIENT_SECRET,
   mongoURI: process.env.MONGO_URI,
   cookieKey: process.env.COOKIE_KEY,
-  redisUrl: 'redis://127.0.0.1:6379'
+  redisUrl: 'redis://127.0.0.1:6379',
+  accessKeyId: process.env.ACCESS_KEY_ID,
+  secretAccessKey: process.env.SECRET_ACCESS_KEY
 };
